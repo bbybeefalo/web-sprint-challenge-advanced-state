@@ -25,7 +25,9 @@ function wheel(state = initialWheelState, action) {
 const initialQuizState = {
   question: null,
   a1: null,
-  a2: null
+  a2: null,
+  a1id: null,
+  a2id: null
 }
 function quiz(state = initialQuizState, action) {
   switch (action.type) {
@@ -36,9 +38,14 @@ function quiz(state = initialQuizState, action) {
   }
 }
 
-const initialSelectedAnswerState = null
+const initialSelectedAnswerState = { answer: null }
 function selectedAnswer(state = initialSelectedAnswerState, action) {
-  return state
+  switch (action.type) {
+    case SET_SELECTED_ANSWER:
+      return {...state, answer: action.payload}
+    default:
+      return state;
+  }
 }
 
 const initialMessageState = ''
