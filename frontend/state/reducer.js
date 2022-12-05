@@ -23,6 +23,7 @@ function wheel(state = initialWheelState, action) {
 }
 
 const initialQuizState = {
+  quiz_id: null,
   question: null,
   a1: null,
   a2: null,
@@ -48,7 +49,7 @@ function selectedAnswer(state = initialSelectedAnswerState, action) {
   }
 }
 
-const initialMessageState = ''
+const initialMessageState = {message: ''}
 function infoMessage(state = initialMessageState, action) {
   switch (action.type) {
     case SET_INFO_MESSAGE:
