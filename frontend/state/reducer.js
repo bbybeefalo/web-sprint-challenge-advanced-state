@@ -1,4 +1,4 @@
-import { MOVE_CLOCKWISE, MOVE_COUNTERCLOCKWISE, SET_QUIZ_INTO_STATE, SET_SELECTED_ANSWER } from './action-types'
+import { MOVE_CLOCKWISE, MOVE_COUNTERCLOCKWISE, SET_INFO_MESSAGE, SET_QUIZ_INTO_STATE, SET_SELECTED_ANSWER } from './action-types'
 // ❗ You don't need to add extra reducers to achieve MVP
 import { combineReducers } from 'redux'
 
@@ -11,20 +11,29 @@ function wheel(state = initialWheelState, action) {
       } else {
         return (state + 1);
       }
-    case(MOVE_COUNTERCLOCKWISE):
+    case (MOVE_COUNTERCLOCKWISE):
       if (state === 0) {
         return state = 5;
       } else {
-      return (state - 1);
+        return (state - 1);
       }
     default:
       return state;
   }
 }
 
-const initialQuizState = null
+const initialQuizState = {
+  question: null,
+  a1: null,
+  a2: null
+}
 function quiz(state = initialQuizState, action) {
-  return state
+  switch (action.type) {
+    case SET_QUIZ_INTO_STATE:
+      return { ...state, question: action.payload }
+    default:
+      return state;
+  }
 }
 
 const initialSelectedAnswerState = null
@@ -34,7 +43,12 @@ function selectedAnswer(state = initialSelectedAnswerState, action) {
 
 const initialMessageState = ''
 function infoMessage(state = initialMessageState, action) {
-  return state
+  switch (action.type) {
+    case SET_INFO_MESSAGE:
+      return { ...state, message: action.payload }
+    default:
+      return state;
+  }
 }
 
 const initialFormState = {
