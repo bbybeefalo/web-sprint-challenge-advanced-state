@@ -72,7 +72,7 @@ function form(state = initialFormState, action) {
     case INPUT_CHANGE:
       return {...state, [action.key]: action.val}
     case RESET_FORM:
-      return {...state, initialFormState}
+      return {...state, newQuestion: '', newTrueAnswer: '', newFalseAnswer: ''};
     default:
       return state;
   }

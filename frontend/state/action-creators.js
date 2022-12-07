@@ -64,7 +64,8 @@ export function postQuiz(newQ) {
     axios.post('http://localhost:9000/api/quiz/new', newQ)
     .then(res => {
       console.log(res);
-      dispatch(setMessage(`Congrats: "${res.data.question}" is a great question!`))
+      dispatch(setMessage(`Congrats: "${res.data.question}" is a great question!`));
+      dispatch(resetForm())
     })
   }
 }
