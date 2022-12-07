@@ -28,6 +28,7 @@ function Form(props) {
       <input
         maxLength={50}
         id="newQuestion"
+        value={newQuestion}
         onChange={onChange}
         placeholder="Enter question"
       />
@@ -35,6 +36,7 @@ function Form(props) {
       <input
         maxLength={50}
         onChange={onChange}
+        value={newTrueAnswer}
         id="newTrueAnswer"
         placeholder="Enter true answer"
       />
@@ -42,6 +44,7 @@ function Form(props) {
       <input
         maxLength={50}
         onChange={onChange}
+        value={newFalseAnswer}
         id="newFalseAnswer"
         placeholder="Enter false answer"
       />

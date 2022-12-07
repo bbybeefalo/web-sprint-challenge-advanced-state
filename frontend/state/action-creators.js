@@ -27,7 +27,7 @@ export function inputChange(key, val) {
 }
 
 export function resetForm() { 
-  return ({ type: RESET_FORM })
+  return ({ type: RESET_FORM})
 }
 
 // ❗ Async action creators
@@ -65,7 +65,6 @@ export function postQuiz(newQ) {
     .then(res => {
       console.log(res);
       dispatch(setMessage(`Congrats: "${res.data.question}" is a great question!`))
-      dispatch(resetForm());
     })
   }
 }
