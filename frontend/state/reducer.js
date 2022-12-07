@@ -70,7 +70,7 @@ const initialFormState = {
 function form(state = initialFormState, action) {
   switch (action.type) {
     case INPUT_CHANGE:
-      return {...state, copy: action.payload}
+      return {...state, [action.key]: action.val}
     case RESET_FORM:
       return {...state, initialFormState}
     default:

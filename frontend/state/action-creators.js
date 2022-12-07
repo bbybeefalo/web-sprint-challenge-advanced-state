@@ -22,8 +22,8 @@ export function setQuiz(question) {
   return ({ type: SET_QUIZ_INTO_STATE, payload: question })
 }
 
-export function inputChange(copy) {
-  return ({type: INPUT_CHANGE, payload: copy})
+export function inputChange(key, val) {
+  return ({type: INPUT_CHANGE, key, val })
 }
 
 export function resetForm() { 
@@ -63,7 +63,8 @@ export function postQuiz(newQ) {
     console.log('poster')
     axios.post('http://localhost:9000/api/quiz/new', newQ)
     .then(res => {
-      console.log(res.data.message);
+      console.log(res);
+      dispatch(setMessage(`Congrats! "${res.data.question}" is a great question!`))
       dispatch(resetForm());
     })
   }

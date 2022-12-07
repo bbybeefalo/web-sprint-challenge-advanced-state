@@ -5,16 +5,20 @@ import { postQuiz, inputChange} from '../state/action-creators'
 
 function Form(props) {
   
-  const { state, postQuiz, inputChange } = props;
-
+  const { newFalseAnswer, newQuestion, newTrueAnswer, postQuiz, inputChange, state} = props;
 
   const onChange = evt => {
-    inputChange(copy)
+    inputChange(evt.target.id, evt.target.value)
   }
 
   const onSubmit = (evt) => {
+    console.log(newFalseAnswer)
     evt.preventDefault();
-    postQuiz(formInfo)
+    postQuiz({
+      question_text: newQuestion,
+      true_answer_text: newTrueAnswer,
+      false_answer_text: newFalseAnswer
+    });
   }
 
   return (
@@ -47,8 +51,10 @@ function Form(props) {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
+    newQuestion: state.form.newQuestion,
+    newTrueAnswer: state.form.newTrueAnswer,
+    newFalseAnswer: state.form.newFalseAnswer,
     state: state.form
   }
 }
